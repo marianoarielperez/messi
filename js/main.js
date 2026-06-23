@@ -136,4 +136,42 @@
     suerte.addEventListener("input", recalc);
     recalc();
   }
+
+  /* ---------- 5) Botones de compartir ---------- */
+  (function initShare() {
+    var botones = document.querySelectorAll(".share[data-share]");
+    if (!botones.length) return;
+
+    var url = window.location.href;
+    var titulo = document.title;
+    var texto = "El álbum de Messi: seis Mundiales contados desde el kiosco de figuritas.";
+
+    var u = encodeURIComponent(url);
+    var t = encodeURIComponent(titulo);
+    var txt = encodeURIComponent(texto);
+
+    var intents = {
+      facebook: "https://www.facebook.com/sharer/sharer.php?u=" + u,
+      x: "https://twitter.com/intent/tweet?text=" + txt + "&url=" + u,
+      whatsapp: "https://api.whatsapp.com/send?text=" + txt + "%20" + u
+    };
+
+    botones.forEach(function (btn) {
+      var red = btn.dataset.share;
+      var destino = intents[red];
+      if (!destino) return;
+      btn.setAttribute("href", destino);
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        // Web Share API nativa en móviles cuando está disponible
+        if (navigator.share && (red === "whatsapp" || red === "x")) {
+          navigator.share({ title: titulo, text: texto, url: url }).catch(function () {
+            window.open(destino, "_blank", "noopener,width=620,height=560");
+          });
+          return;
+        }
+        window.open(destino, "_blank", "noopener,width=620,height=560");
+      });
+    });
+  })();
 })();

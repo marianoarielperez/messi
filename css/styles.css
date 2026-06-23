@@ -127,8 +127,16 @@ img { max-width: 100%; display: block; }
   align-items: center;
   flex-wrap: wrap;
 }
-.hero__meta strong { color: var(--tinta); }
+.hero__meta strong { color: var(--tinta); font-weight: 600; }
 .hero__meta .dot { color: var(--dorado); }
+
+.hero__date {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: var(--gris-suave);
+  margin-top: 0.45rem;
+}
 
 .hero__share {
   display: flex;
