@@ -567,13 +567,10 @@ input[type="range"]::-moz-range-thumb {
 .meta-umai .meta { margin-top: 0; border-top: none; padding-top: 0; }
 .meta-umai a {
   display: inline-flex;
-  background: var(--blanco);
-  padding: 0.5rem 0.75rem;
-  border-radius: 8px;
   transition: opacity 0.2s ease;
 }
 .meta-umai a:hover { opacity: 0.85; }
-.umai-logo { height: 26px; width: auto; display: block; }
+.umai-logo { height: 30px; width: auto; display: block; }
 
 @media (max-width: 680px) {
   .credits-inner { grid-template-columns: 1fr; gap: 1.6rem; }
