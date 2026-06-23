@@ -521,25 +521,43 @@ input[type="range"]::-moz-range-thumb {
   margin: 0.4rem 0 2.2rem;
 }
 
-/* ============ PIE ============ */
-.foot {
-  background: var(--tinta);
-  color: #c8cbd1;
-  text-align: center;
-  padding: 3rem 1.5rem;
-  font-family: var(--sans);
-  font-size: 0.92rem;
-  line-height: 1.6;
+/* ============ PIE / CRÉDITOS ============ */
+.credits { background: var(--tinta); color: var(--blanco); }
+.credits-inner {
+  max-width: 78rem;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2.5rem;
 }
-.foot p { margin: 0 0 0.5rem; }
-.foot__brand {
+.credits h4 {
   font-family: var(--serif-display);
-  font-weight: 800;
-  font-size: 1.4rem;
-  color: var(--blanco);
-  letter-spacing: 0.04em;
+  font-weight: 700;
+  font-size: 1.7rem;
+  margin: 0 0 1rem;
 }
-.foot__small { color: var(--gris-suave); font-size: 0.82rem; max-width: 560px; margin: 1rem auto 0; }
+.credits p {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #c8cbd1;
+  margin: 0.2rem 0;
+}
+.credits .role { color: var(--gris-suave); }
+.credits .meta {
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  color: var(--dorado-claro);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 1.5rem;
+  border-top: 1px solid #2c3137;
+  padding-top: 1.3rem;
+}
+@media (max-width: 680px) {
+  .credits-inner { grid-template-columns: 1fr; gap: 1.6rem; }
+}
 
 /* ============ REVELADO AL SCROLL ============ */
 .reveal {
