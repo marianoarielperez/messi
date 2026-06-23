@@ -555,6 +555,26 @@ input[type="range"]::-moz-range-thumb {
   border-top: 1px solid #2c3137;
   padding-top: 1.3rem;
 }
+.meta-umai {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  border-top: 1px solid #2c3137;
+  padding-top: 1.3rem;
+  flex-wrap: wrap;
+}
+.meta-umai .meta { margin-top: 0; border-top: none; padding-top: 0; }
+.meta-umai a {
+  display: inline-flex;
+  background: var(--blanco);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  transition: opacity 0.2s ease;
+}
+.meta-umai a:hover { opacity: 0.85; }
+.umai-logo { height: 26px; width: auto; display: block; }
+
 @media (max-width: 680px) {
   .credits-inner { grid-template-columns: 1fr; gap: 1.6rem; }
 }
