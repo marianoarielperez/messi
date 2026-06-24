@@ -222,7 +222,7 @@ img { max-width: 100%; display: block; }
 
 .chapter__intro { position: relative; }
 .chapter__logo {
-  height: 56px;
+  height: 75px;
   width: auto;
   margin-bottom: 0.9rem;
   opacity: 0.95;
