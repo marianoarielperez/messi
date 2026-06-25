@@ -220,11 +220,11 @@ img { max-width: 100%; display: block; }
 }
 .chapter__fig:hover { transform: rotate(0deg) scale(1.02); }
 
-.chapter__intro { position: relative; }
+.chapter__intro { position: relative; text-align: center; }
 .chapter__logo {
   height: 110px;
   width: auto;
-  margin-bottom: 0.9rem;
+  margin: 0 auto 0.9rem;
   opacity: 0.95;
 }
 .chapter__title {
