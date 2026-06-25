@@ -28,7 +28,7 @@
 
   /* ---------- 2) Revelado al scroll ---------- */
   var revealTargets = document.querySelectorAll(
-    ".chapter, .coda, .intro, .calc, .guess, .pull"
+    ".chapter, .coda, .intro, .calc, .guess, .pull, .trivia"
   );
   revealTargets.forEach(function (el) { el.classList.add("reveal"); });
 
@@ -137,7 +137,58 @@
     recalc();
   }
 
-  /* ---------- 5) Botones de compartir ---------- */
+  /* ---------- 5) Verdadero o Falso ---------- */
+  (function initTrivia() {
+    var trivia = document.getElementById("trivia");
+    if (!trivia) return;
+
+    var items = trivia.querySelectorAll(".trivia__item");
+    if (!items.length) return;
+
+    var total = items.length;
+    var respondidas = 0;
+    var aciertos = 0;
+
+    // Contador de aciertos al pie (se crea por JS para no tocar el markup)
+    var score = document.createElement("p");
+    score.className = "trivia__score";
+    score.setAttribute("aria-live", "polite");
+    score.hidden = true;
+    trivia.appendChild(score);
+
+    items.forEach(function (item) {
+      var correcta = item.dataset.answer;
+      var botones = item.querySelectorAll(".trivia__btn");
+      var reveal = item.querySelector(".trivia__reveal");
+
+      // El reveal anuncia el resultado a lectores de pantalla
+      if (reveal) reveal.setAttribute("aria-live", "polite");
+
+      botones.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var acierto = btn.dataset.value === correcta;
+
+          botones.forEach(function (b) {
+            b.disabled = true;
+            if (b.dataset.value === correcta) b.classList.add("is-correct");
+            else if (b === btn) b.classList.add("is-wrong");
+          });
+
+          if (reveal) reveal.hidden = false;
+
+          respondidas += 1;
+          if (acierto) aciertos += 1;
+
+          if (respondidas === total) {
+            score.textContent = "Pegaste " + aciertos + " de " + total + ".";
+            score.hidden = false;
+          }
+        });
+      });
+    });
+  })();
+
+  /* ---------- 6) Botones de compartir ---------- */
   (function initShare() {
     var botones = document.querySelectorAll(".share[data-share]");
     if (!botones.length) return;
